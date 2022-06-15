@@ -67,8 +67,8 @@ async function bootstrap() {
     console.log('error', error);
   }
 
-  const port = Number(process.env.PORT) || 8080;
-  const hostname = process.env.HOSTNAME || '';
+  const port = Number(process.env.PORT) || 80;
+  const hostname = process.env.HOSTNAME || '0.0.0.0';
   console.log(`Application listen to: ${ hostname }:${ port }`);
   await app.listen(port, hostname);
   console.log(`Application is running on: ${await app.getUrl()}`);
