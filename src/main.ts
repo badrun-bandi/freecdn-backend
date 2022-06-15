@@ -51,32 +51,32 @@ async function bootstrap() {
     const styleSources = ["'self'", "'unsafe-inline'"];
     const connectSources = ["'self'"];
 
-    // app.use(helmet.contentSecurityPolicy(
-    //   {
-    //     directives: {
-    //     defaultSrc: ["'self'", "'unsafe-inline'"],
-    //     scriptSrc: scriptSources,
-    //     scriptSrcElem: scriptSources,
-    //     styleSrc: styleSources,
-    //     connectSrc: connectSources,
-    //     }
-    //   }
-    // ));
+    app.use(helmet.contentSecurityPolicy(
+      {
+        directives: {
+        defaultSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: scriptSources,
+        scriptSrcElem: scriptSources,
+        styleSrc: styleSources,
+        connectSrc: connectSources,
+        }
+      }
+    ));
 
-    // app.use(helmet.crossOriginEmbedderPolicy());
-    // app.use(helmet.crossOriginOpenerPolicy());
-    // app.use(helmet.crossOriginResourcePolicy());
-    // app.use(helmet.dnsPrefetchControl());
-    // app.use(helmet.expectCt());
-    // app.use(helmet.frameguard());
-    // app.use(helmet.hidePoweredBy());
-    // app.use(helmet.hsts());
-    // app.use(helmet.ieNoOpen());
-    // app.use(helmet.noSniff());
-    // app.use(helmet.originAgentCluster());
-    // app.use(helmet.permittedCrossDomainPolicies());
-    // app.use(helmet.referrerPolicy());
-    // app.use(helmet.xssFilter());
+    app.use(helmet.crossOriginEmbedderPolicy());
+    app.use(helmet.crossOriginOpenerPolicy());
+    app.use(helmet.crossOriginResourcePolicy());
+    app.use(helmet.dnsPrefetchControl());
+    app.use(helmet.expectCt());
+    app.use(helmet.frameguard());
+    app.use(helmet.hidePoweredBy());
+    app.use(helmet.hsts());
+    app.use(helmet.ieNoOpen());
+    app.use(helmet.noSniff());
+    app.use(helmet.originAgentCluster());
+    app.use(helmet.permittedCrossDomainPolicies());
+    app.use(helmet.referrerPolicy());
+    app.use(helmet.xssFilter());
 
     app.enableCors(corsOptions);
 
@@ -84,7 +84,7 @@ async function bootstrap() {
     console.log('error', error);
   }
 
-  const port = Number(process.env.PORT) || 8080;
+  const port = Number(process.env.PORT) || 80;
   const hostname = process.env.HOSTNAME || '';
   console.log(`Application listen to: ${ hostname }:${ port }`);
   await app.listen(port, hostname);
